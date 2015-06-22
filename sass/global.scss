@@ -1,15 +1,13 @@
-//
-    Includes
+// Includes
 @import 'normalize';
 @import 'variables';
-@import 'grid';
 
-/*
-    Global Styling
-    --------------
+/*  Global Styling
+    -------------- */
 
-*,*:after,*:before
+*,*:after,*:before {
     box-sizing: border-box
+}
 
 html, body {
     font-size: 16px;
