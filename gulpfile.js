@@ -4,7 +4,19 @@
 // Requirements
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var sourcemaps = require('gulp-sourcemaps');
+var autoprefixer = require('gulp-autoprefixer');
 var browserSync = require('browser-sync').create();
+
+var settings = {
+    sass: {
+        outputStyle: 'compressed'
+    },
+    autoprefixer: {
+        browsers: ['last 2 versions'],
+        cascade: false
+    }
+};
 
 var files = {
     html: {
@@ -33,7 +45,10 @@ var files = {
 
 gulp.task('sass', function() {
     gulp.src(files.sass.src)
-        .pipe(sass().on('error', sass.logError))
+        .pipe(sourcemaps.init())
+        .pipe(sass( settings.sass ).on('error', sass.logError))
+        .pipe(sourcemaps.write({includeContent: false, sourceRoot: '/sass'}))
+        .pipe(autoprefixer(settings.autoprefixer))
         .pipe(gulp.dest(files.sass.dest))
         .pipe(browserSync.stream());
 });
