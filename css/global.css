@@ -353,7 +353,7 @@ th {
   padding: 0; }
 
 /*  Global Styling
-    -------------- */
+ *  -------------- */
 *, *:after, *:before {
   box-sizing: border-box; }
 
@@ -361,3 +361,8 @@ html, body {
   font-size: 16px;
   font-family: 'Open Sans', sans-serif;
   background: #eee; }
+
+.box {
+  height: 300px;
+  width: 300px;
+  background: red; }

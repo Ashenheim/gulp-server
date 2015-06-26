@@ -7,16 +7,30 @@ var sass = require('gulp-sass');
 var browserSync = require('browser-sync').create();
 
 var files = {
+    html: {
+        src: [
+            '*.html'
+        ]
+    },
     sass: {
         src: [
             'sass/**/*.{scss,sass}',
             'sass/*.{scss,sass}'
         ],
         dest: 'css/'
+    },
+    js: {
+        src: [
+            'js/*.js',
+            'js/**/*.js'
+        ]
     }
 };
 
-// Invidual tasks
+/* ------------------------------------
+    Invidual tasks
+------------------------------------ */
+
 gulp.task('sass', function() {
     gulp.src(files.sass.src)
         .pipe(sass().on('error', sass.logError))
@@ -26,8 +40,9 @@ gulp.task('sass', function() {
 
 
 gulp.task('watch', function() {
-    gulp.watch('./sass/**/*.{sass,scss}', ['sass']);
-    gulp.watch('*.html').on('change', browserSync.reload);
+    gulp.watch( files.sass.src , ['sass']);
+    gulp.watch( files.js.src ).on('change', browserSync.reload);
+    gulp.watch( files.html.src ).on('change', browserSync.reload);
 });
 
 gulp.task('browser-sync', function() {
