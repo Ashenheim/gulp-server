@@ -1,7 +1,7 @@
 // Includes
-@import normalize
-@import variables
-@import ../bower_components/bourbon/app/assets/stylesheets/bourbon
+@import "normalize"
+@import "variables"
+@import "../bower_components/bourbon/app/assets/stylesheets/bourbon"
 
 /*  Global Styling
  *  --------------
@@ -13,3 +13,17 @@
 
 html, body
     font-family: arial, sans-serif
+    background: lighten(black, 10%)
+
+
+.site-wrap
+    max-width: 700px
+    +margin( 50px auto null )
+    background: #fff
+    +padding( 15px )
+
+    h1
+        line-height: 1
+        margin: 0
+        padding: 0
+        +size(100px)
